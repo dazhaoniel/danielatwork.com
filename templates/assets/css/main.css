@@ -2422,6 +2422,7 @@
 			padding-right: 2.5em;
 			vertical-align: middle;
 			width: 48%;
+			margin-bottom: 2%;
 		}
 
 			.features article .image img {
@@ -2432,6 +2433,7 @@
 		.features article .inner {
 			display: inline-block;
 			vertical-align: middle;
+			text-wrap: none;
 			width: 50%;
 		}
 
@@ -2563,9 +2565,9 @@
 			border-top: 0;
 		}
 
-/* One */
+/* About */
 
-	#one:before {
+	#about:before {
 		background-image: url("../../images/banner.jpg");
 		background-position: top right;
 		background-repeat: no-repeat;
