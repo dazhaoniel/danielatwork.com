@@ -1549,10 +1549,10 @@
 
 	body, input, select, textarea {
 		color: #888;
-		/*font-family: 'Alegreya', serif;*/
-		font-family: 'Lato', sans-serif;
+		font-family: 'Montserrat', sans-serif;
+		/*font-family: 'Lato', sans-serif;*/
 		font-size: 16pt;
-		font-weight: 400;
+		/*font-weight: 400;*/
 		line-height: 1.75em;
 	}
 
