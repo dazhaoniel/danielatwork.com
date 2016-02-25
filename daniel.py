@@ -1,23 +1,42 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, g
 from sqlite3 import dbapi2 as sqlite3
+from datetime import datetime
 
+# Configuration
 app = Flask(__name__)
-
 
 app.config.update(dict(
     DATABASE=os.path.join(app.root_path, 'daniel.db'),
     DEBUG=True,
-    SECRET_KEY='',
+    SECRET_KEY='development key',
     USERNAME='admin',
     PASSWORD='admin'
 ))
-app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
-@app.route("/")
+app.config.from_envvar('DANIEL_SETTINGS', silent=True)
+
+
+def connect_db():
+	return sqlite3.connect(app.config['DATABASE'])
+
+
+def get_db():
+    """Opens a new database connection if there is none yet for the
+    current application context.
+    """
+    if not hasattr(g, 'sqlite_db'):
+        g.sqlite_db = connect_db()
+    return g.sqlite_db
+
+
+@app.route('/')
 def index():
-    # return "Hello World!"
-    return render_template('index.html')
+    db = get_db()
+    cur = db.execute('select * from dp_entries order by last_updated desc')
+    entries = cur.fetchall()
+    return render_template('index.html', entries=entries)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
