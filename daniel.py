@@ -35,7 +35,8 @@ def index():
     db = get_db()
     cur = db.execute('select * from dp_entries order by last_updated desc')
     entries = cur.fetchall()
-    return render_template('index.html', entries=entries)
+    current_year = datetime.now().year
+    return render_template('index.html', entries=entries, year=current_year)
 
 
 if __name__ == "__main__":
