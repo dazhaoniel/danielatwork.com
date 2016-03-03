@@ -87,8 +87,8 @@
 												<h4>{{ entry.name }}</h4>
 												<h5>{{ entry.year }}</h5>
 											</div>
-											<p>{{ entry.description }}</p>
-											<p><b>Stack:</b> Django, Python, PostgreSQL, Celery, AngularJS</p>
+											<p>{{ entry.description|safe }}</p>
+											<p><b>Stack:</b> {{ entry.dp_stack }}</p>
 										</article>
   										{% endfor %}
 									</div>
