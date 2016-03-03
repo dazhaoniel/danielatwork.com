@@ -75,6 +75,7 @@
 
 						<!-- Projects -->
 							<section id="projects">
+							{% block body %}
 								<div class="container">
 									<h3>A Few Projects</h3>
 									<p>Here are some projects from either my hobbies or job. FYI, there are some projects not listed because they are in early stage development, or not ready to showcase.</p>
@@ -83,7 +84,7 @@
     									<article>
 											<a href="{{ entry.url }}" target="_blank" class="image"><img src="{{ entry.image_url }}" alt="" /></a>
 											<div class="inner">
-												<h4>{{ entry }}</h4>
+												<h4>{{ entry.name }}</h4>
 												<h5>{{ entry.year }}</h5>
 											</div>
 											<p>{{ entry.description }}</p>
@@ -92,6 +93,7 @@
   										{% endfor %}
 									</div>
 								</div>
+							{% endblock %}
 							</section>
 					</div>
 

@@ -3,16 +3,19 @@ Daniel Zhao - Portfolio
 
 # Introduction
 
-This is a simple static page built with Flask and hosted on [BlueHost](https://bluehost.com). It displays:
+This is a simple static one page website built with Flask and hosted on [BlueHost](https://bluehost.com).
 
-* Featured Projects
-* Recent posts from a feed URL
-
-I built it for [danielatwork.com](http://danielatwork.com), but it can be used to power any static pages and can serve as a useful template for starting a portfolio site with static media (JavaScript, CSS, HTML, etc).
+I built it for [danielatwork.com](http://danielatwork.com), but it can be used to power any static pages and can serve as a useful template for starting a one page portfolio site with static media (JavaScript, CSS, HTML, etc).
 
 # Dependencies
 
 1. Flask: `pip install Flask`
+
+# Commands
+
+1. Initialize Database: `sqlite3 daniel.db < schema.sql`
+
+2. Run The Application: `python daniel.py`
 
 # HTML Template
 
