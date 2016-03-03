@@ -108,6 +108,14 @@
 					$('#titleBar, #header, #wrapper')
 						.css('transition', 'none');
 
+		// Scroll To Top Animation
+			$('#logo a').click(function () {
+				$('body,html').animate({
+					scrollTop: 0
+				}, 800);
+				return false;
+			});
+
 	});
 
 })(jQuery);
