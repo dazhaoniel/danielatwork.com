@@ -10,10 +10,11 @@ I built it for [danielatwork.com](http://danielatwork.com), but it can be used t
 # Dependencies
 
 1. Flask: `pip install Flask`
+2. Flask-MySQL: `pip install flask-mysql`
 
 # Commands
 
-1. Initialize Database: `sqlite3 daniel.db < schema.sql`
+1. Initialize Database: `mysql -u -p test < wordpress.sql`
 
 2. Run The Application: `python daniel.py`
 
