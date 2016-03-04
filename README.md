@@ -24,3 +24,7 @@ The HTML Template is from [Read Only by HTML5 Up](http://html5up.net/read-only)
 # Site
 
 [Daniel Zhao - Portfolio](http://danielatwork.com)
+
+# TODO
+
+1. Trailing slash problem for route

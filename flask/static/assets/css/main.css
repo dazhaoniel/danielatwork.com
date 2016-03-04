@@ -2576,9 +2576,9 @@
 			border-top: 0;
 		}
 
-/* About */
+/* Top Banner */
 
-	#about:before {
+	.top:before {
 		background-image: url("../../images/banner.jpg");
 		background-position: top right;
 		background-repeat: no-repeat;

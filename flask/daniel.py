@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, g
+from flaskext.mysql import MySQL
 from sqlite3 import dbapi2 as sqlite3
 from datetime import datetime
 
@@ -39,6 +40,11 @@ def index():
     entries = cur.fetchall()
     current_year = datetime.now().year
     return render_template('index.html', entries=entries, year=current_year)
+
+
+@app.route('/wheres-my-car-privacy-policy')
+def wmc_privacy_policy():
+    return render_template('wmc-privacy-policy.html')
 
 
 if __name__ == "__main__":
