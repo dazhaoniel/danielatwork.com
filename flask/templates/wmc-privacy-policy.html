@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- About -->
+<!-- Where's My Car Privacy Policy -->
 <section id="wmc-privacy-policy" class="top">
 	<div class="container">
 		<header class="major">
-			<h2>Where's My Car Privacy Policy</h2>
+			<h2>{{ policy[5] }}</h2>
 		</header>
-        <p>Privacy Policy</p>
+        <p>{{ policy[4]|safe }}</p>
 	</div>
 </section>
 {% endblock %}
