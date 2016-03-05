@@ -28,4 +28,4 @@ The HTML Template is from [Read Only by HTML5 Up](http://html5up.net/read-only)
 
 # TODO
 
-1. Trailing slash problem for route
+1.
