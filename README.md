@@ -16,7 +16,9 @@ I built it for [danielatwork.com](http://danielatwork.com), but it can be used t
 
 1. Initialize Database: `mysql -u -p test < wordpress.sql`
 
-2. Run The Application: `python daniel.py`
+2. Start MySQL Server: `mysql.server start`
+
+3. Run The Application: `python daniel.py`
 
 # HTML Template
 
