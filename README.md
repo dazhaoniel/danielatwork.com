@@ -5,7 +5,7 @@ Daniel Zhao - Portfolio
 
 This is a simple static one page website built with Flask and hosted on [BlueHost](https://bluehost.com).
 
-I built it for [danielatwork.com](http://danielatwork.com), but it can be used to power any static pages and can serve as a useful template for starting a one page portfolio site with static media (JavaScript, CSS, HTML, etc).
+I built it for [danielatwork.com](http://danielatwork.com) on top of my old WordPress website, but it can be used to power any static pages and can serve as a useful template for starting a one page portfolio site with static media (JavaScript, CSS, HTML, etc).
 
 # Dependencies
 
