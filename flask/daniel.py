@@ -23,7 +23,9 @@ app.config.from_envvar('DANIEL_SETTINGS', silent=True)
 def index():
     cursor = mysql.get_db().cursor()
     # Get Projects
-    cursor.execute('''SELECT * FROM wp_posts 
+    cursor.execute('''SELECT * FROM wp_posts
+        LEFT JOIN test.wp_term_relationships
+        ON wp_posts.ID=wp_term_relationships.object_id
         WHERE post_type='project' 
         AND post_status='publish' 
         ORDER BY post_date DESC''')
