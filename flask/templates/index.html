@@ -42,7 +42,7 @@
 					<h5>{{ entry.year }}</h5>
 				</div>
 				<p>{{ entry[4]|safe }}</p>
-				<p><b>Stack:</b> {{ entry.dp_stack }}</p>
+				<p><b>Stack:</b> {{ get_stack(entry[0]) }}</p>
 			</article>
 			{% endfor %}
 		</div>
