@@ -1,14 +1,14 @@
 <section id="header">
 	<header>
 		<span class="image avatar"><img src="../static/images/avatar.jpg" alt="" /></span>
-		<h1 id="logo"><a href="http://danielatwork.com">Daniel Zhao</a></h1>
+		<h1 id="logo"><a href="{{ url_for('.index') }}">Daniel Zhao</a></h1>
 		<p>Code, Eat, Run</p>
 	</header>
 	<nav id="nav">
 		<ul>
-			<li><a href="#about" class="active">About Me</a></li>
-			<li><a href="#skills">Things I Do Well</a></li>
-			<li><a href="#projects">A Few Projects</a></li>
+			<li><a href="{{ url_for('.index') }}#about" class="active">About Me</a></li>
+			<li><a href="{{ url_for('.index') }}#skills">Things I Do Well</a></li>
+			<li><a href="{{ url_for('.index') }}#projects">A Few Projects</a></li>
             <li><a href="http://1kgmore.org" target="_blank">1KG More</a></li>
 		</ul>
 	</nav>
