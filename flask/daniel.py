@@ -23,15 +23,11 @@ app.config.from_envvar('DANIEL_SETTINGS', silent=True)
 def index():
     cursor = mysql.get_db().cursor()
     # Get Projects
-    cursor.execute('''SELECT * FROM wp_posts
-        WHERE post_type='project' 
-        AND post_status='publish' 
-        ORDER BY post_date DESC''')
+    cursor.execute("SELECT * FROM wp_posts WHERE post_type='project' AND post_status='publish' ORDER BY post_date DESC")
     entries = cursor.fetchall()
-    # LEFT JOIN test.wp_term_relationships
-    # ON wp_posts.ID=wp_term_relationships.object_id
+
     # Get About
-    cursor.execute('''SELECT * FROM wp_posts WHERE ID=1251''')
+    cursor.execute("SELECT * FROM wp_posts WHERE ID=1251")
     about = cursor.fetchone()
     
     return render_template('index.html', entries=entries, about=about)
@@ -40,7 +36,7 @@ def index():
 @app.route('/wheres-my-car-privacy-policy/')
 def wmc_privacy_policy():
     cursor = mysql.get_db().cursor()
-    cursor.execute('''SELECT * FROM wp_posts WHERE ID=1389''')
+    cursor.execute("SELECT * FROM wp_posts WHERE ID=1389")
     policy = cursor.fetchone()
 
     return render_template('wmc-privacy-policy.html', policy=policy)
@@ -55,15 +51,18 @@ app.jinja_env.globals.update(current_year=current_year)
 def get_stack(post_id):
     cursor = mysql.get_db().cursor()
     # Get Stacks
-    cursor.execute('''SELECT wp_term_taxonomy.term_id, taxonomy FROM wp_term_relationships
-        LEFT JOIN wp_term_taxonomy
-        ON wp_term_relationships.term_taxonomy_id=wp_term_taxonomy.term_taxonomy_id
-        WHERE object_id =1454''')
+    cursor.execute("SELECT wp_terms.name FROM wp_term_taxonomy, wp_term_relationships, wp_terms WHERE wp_term_relationships.object_id='"+ str(post_id) +"' AND wp_term_taxonomy.term_taxonomy_id=wp_term_relationships.term_taxonomy_id AND wp_term_taxonomy.taxonomy='skills' AND wp_term_taxonomy.term_id=wp_terms.term_id")
     stack = cursor.fetchall()
 
     return stack
 
 app.jinja_env.globals.update(get_stack=get_stack)
+
+
+def get_meta(post_id):
+    return
+
+app.jinja_env.globals.update(get_meta=get_meta)
 
 
 if __name__ == "__main__":
