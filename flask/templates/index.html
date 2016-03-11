@@ -34,17 +34,7 @@
 		<h3>A Few Projects</h3>
 		<p>Here are some projects from either my hobbies or job. FYI, there are some projects not listed because they are in early stage development, or not ready to showcase.</p>
 		<div class="features">
-			{% for entry in entries %}
-			<article>
-				<a href="{{ entry.url }}" target="_blank" class="image"><img src="{{ entry.image_url }}" alt="" /></a>
-				<div class="inner">
-					<h4>{{ entry[5] }}</h4>
-					<h5>{{ entry.year }}</h5>
-				</div>
-				<p>{{ entry[4]|safe }}</p>
-				<p><b>Stack:</b> {{ get_stack(entry[0]) }}</p>
-			</article>
-			{% endfor %}
+			{% include "_project.html" %}
 		</div>
 	</div>
 </section>

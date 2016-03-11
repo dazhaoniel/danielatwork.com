@@ -58,11 +58,35 @@ def get_stack(post_id):
 
 app.jinja_env.globals.update(get_stack=get_stack)
 
+# _pilotfish_meta_value_project_url_key
+def get_meta_url(post_id):
+    cursor = mysql.get_db().cursor()
+    cursor.execute("SELECT meta_value FROM wp_postmeta WHERE post_id='"+ str(post_id) +"' AND meta_key='_pilotfish_meta_value_project_url_key'")
+    meta = cursor.fetchone()
 
-def get_meta(post_id):
-    return
+    return meta
 
-app.jinja_env.globals.update(get_meta=get_meta)
+app.jinja_env.globals.update(get_meta_url=get_meta_url)
+
+# _pilotfish_meta_value_project_image_url_key
+def get_meta_image_url(post_id):
+    cursor = mysql.get_db().cursor()
+    cursor.execute("SELECT meta_value FROM wp_postmeta WHERE post_id='"+ str(post_id) +"' AND meta_key='_pilotfish_meta_value_project_image_url_key'")
+    meta = cursor.fetchone()
+
+    return meta
+
+app.jinja_env.globals.update(get_meta_image_url=get_meta_image_url)
+
+# _pilotfish_meta_value_project_year_key
+def get_meta_year(post_id):
+    cursor = mysql.get_db().cursor()
+    cursor.execute("SELECT meta_value FROM wp_postmeta WHERE post_id='"+ str(post_id) +"' AND meta_key='_pilotfish_meta_value_project_year_key'")
+    meta = cursor.fetchone()
+
+    return meta
+
+app.jinja_env.globals.update(get_meta_year=get_meta_year)
 
 
 if __name__ == "__main__":

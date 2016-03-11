@@ -1,0 +1,17 @@
+{% for entry in entries %}
+<article>
+	<a href="{{ get_meta_url(entry[0])[0] }}" target="_blank" class="image"><img src="{{ get_meta_image_url(entry[0])[0] }}" alt="" /></a>
+	<div class="inner">
+		<h4>{{ entry[5] }}</h4>
+		<h5>{{ get_meta_year(entry[0])[0] }}</h5>
+	</div>
+	<p>{{ entry[4]|safe }}</p>
+	{% set skills = get_stack(entry[0]) %}
+	<p><b>Stack:</b>
+		{% for skill in skills %}
+			{{ skill[0] }}
+			{% if not loop.last %},{% endif %}
+		{% endfor %}
+	</p>
+</article>
+{% endfor %}
