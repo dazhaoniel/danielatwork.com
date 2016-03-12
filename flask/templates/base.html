@@ -4,7 +4,7 @@
 		<title>Daniel Zhao (赵婧仪) - Web &amp; Mobile Developer Based In New York City</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-		<meta name="description" content="Daniel Zhao is a Web Developer and Android Developer based in New York City.">
+		<meta name="description" content="Daniel Zhao is a Web Developer and Mobile Developer based in New York City.">
 		<meta name="keywords" content="android developer, WordPress, Pilot Fish, web developer, Freelance, Rensselaer Polytechnic Institute, responsive website, Non Profit Organizations, Daniel Zhao">
 		<meta name="author" content="Daniel Zhao">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,7 +16,11 @@
 	</head>
 	<body>
 		<!-- Header -->
-		{% include "_navigation.html" %}
+		{% if request.path == "/" %}
+			{% include "_navigation.html" %}
+		{% else %}
+			{% include "_navigation2.html" %}
+		{% endif %}
 
 		<!-- Wrapper -->
 		<div id="wrapper">
@@ -34,13 +38,6 @@
 			</section>
 		</div>
 		<!-- Scripts -->
-		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-		<script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
-		<script src="../static/assets/js/jquery.scrollzer.min.js"></script>
-		<script src="../static/assets/js/jquery.scrolly.min.js"></script>
-		<script src="../static/assets/js/skel.min.js"></script>
-		<script src="../static/assets/js/util.js"></script>
-		<!--[if lte IE 8]><script src="../static/assets/js/ie/respond.min.js"></script><![endif]-->
-		<script src="../static/assets/js/main.js"></script>
+		{% include "_scripts.html" %}
 	</body>
 </html>
