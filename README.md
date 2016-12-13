@@ -3,7 +3,7 @@ Daniel Zhao - Portfolio
 
 # Introduction
 
-This is a simple static one page website built with Flask and hosted on [BlueHost](https://bluehost.com).
+This is a simple static one page website built with Flask and hosted on [Heroku](https://heroku.com).
 
 I built it for [danielatwork.com](http://danielatwork.com) on top of my old WordPress website, but it can be used to power any static pages and can serve as a useful template for starting a one page portfolio site with MySQL and static media (JavaScript, CSS, HTML, etc).
 
@@ -12,7 +12,7 @@ I built it for [danielatwork.com](http://danielatwork.com) on top of my old Word
 1. Flask: `pip install Flask`
 2. Flask-MySQL: `pip install flask-mysql`
 
-# Commands
+# Commands to run it locally
 
 1. Initialize Database: `mysql -u -p test < wordpress.sql`
 
