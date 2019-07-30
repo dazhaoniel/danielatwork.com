@@ -1,0 +1,37 @@
+{
+	"about": "",
+	"projects": [
+		{
+			"name":"",
+			"description": "",
+			"url": "",
+			"image_url": ""
+		},
+		{
+			"name":"",
+			"description": "",
+			"url": "",
+			"image_url": ""
+		},
+		{
+			"name":"",
+			"description": "",
+			"url": "",
+			"image_url": ""
+		},
+		{
+			"name":"",
+			"description": "",
+			"url": "",
+			"image_url": ""
+		}
+	],
+	"stack": {
+		"backend": "",
+		"frontend": "",
+		"application": "",
+		"database": ""
+	},
+	"languages": "",
+	"hobbies": ""
+}
