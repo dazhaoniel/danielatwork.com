@@ -1,0 +1,3 @@
+[submodule "hugo-portfolio/themes/hyde-hyde"]
+	path = hugo-portfolio/themes/hyde-hyde
+	url = https://github.com/htr3n/hyde-hyde.git
