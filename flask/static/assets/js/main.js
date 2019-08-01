@@ -1,128 +1,159 @@
 /*
 	Read Only by HTML5 UP
-	html5up.net | @n33co
+	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
 (function($) {
 
-	skel.breakpoints({
-		xlarge: '(max-width: 1680px)',
-		large: '(max-width: 1280px)',
-		medium: '(max-width: 1024px)',
-		small: '(max-width: 736px)',
-		xsmall: '(max-width: 480px)'
-	});
+	var $window = $(window),
+		$body = $('body'),
+		$header = $('#header'),
+		$titleBar = null,
+		$nav = $('#nav'),
+		$wrapper = $('#wrapper');
 
-	$(function() {
+	// Breakpoints.
+		breakpoints({
+			xlarge:   [ '1281px',  '1680px' ],
+			large:    [ '1025px',  '1280px' ],
+			medium:   [ '737px',   '1024px' ],
+			small:    [ '481px',   '736px'  ],
+			xsmall:   [ null,      '480px'  ],
+		});
 
-		var $body = $('body'),
-			$header = $('#header'),
-			$nav = $('#nav'), $nav_a = $nav.find('a'),
-			$wrapper = $('#wrapper');
+	// Play initial animations on page load.
+		$window.on('load', function() {
+			window.setTimeout(function() {
+				$body.removeClass('is-preload');
+			}, 100);
+		});
 
-		// Fix: Placeholder polyfill.
-			$('form').placeholder();
+	// Tweaks/fixes.
 
-		// Prioritize "important" elements on medium.
-			skel.on('+medium -medium', function() {
-				$.prioritize(
-					'.important\\28 medium\\29',
-					skel.breakpoint('medium').active
-				);
-			});
+		// Polyfill: Object fit.
+			if (!browser.canUse('object-fit')) {
 
-		// Header.
-			var ids = [];
+				$('.image[data-position]').each(function() {
 
-			// Set up nav items.
-				$nav_a
-					.scrolly({ offset: 44 })
-					.on('click', function(event) {
+					var $this = $(this),
+						$img = $this.children('img');
 
-						var $this = $(this),
-							href = $this.attr('href');
+					// Apply img as background.
+						$this
+							.css('background-image', 'url("' + $img.attr('src') + '")')
+							.css('background-position', $this.data('position'))
+							.css('background-size', 'cover')
+							.css('background-repeat', 'no-repeat');
 
-						// Not an internal link? Bail.
-							if (href.charAt(0) != '#')
-								return;
+					// Hide img.
+						$img
+							.css('opacity', '0');
 
-						// Prevent default behavior.
-							event.preventDefault();
+				});
 
-						// Remove active class from all links and mark them as locked (so scrollzer leaves them alone).
-							$nav_a
-								.removeClass('active')
-								.addClass('scrollzer-locked');
+			}
 
-						// Set active class on this link.
-							$this.addClass('active');
+	// Header Panel.
 
-					})
-					.each(function() {
+		// Nav.
+			var $nav_a = $nav.find('a');
 
-						var $this = $(this),
-							href = $this.attr('href'),
-							id;
+			$nav_a
+				.addClass('scrolly')
+				.on('click', function() {
 
-						// Not an internal link? Bail.
-							if (href.charAt(0) != '#')
-								return;
+					var $this = $(this);
 
-						// Add to scrollzer ID list.
-							id = href.substring(1);
-							$this.attr('id', id + '-link');
-							ids.push(id);
+					// External link? Bail.
+						if ($this.attr('href').charAt(0) != '#')
+							return;
 
-					});
+					// Deactivate all links.
+						$nav_a.removeClass('active');
 
-			// Initialize scrollzer.
-				$.scrollzer(ids, { pad: 300, lastHack: true });
+					// Activate link *and* lock it (so Scrollex doesn't try to activate other links as we're scrolling to this one's section).
+						$this
+							.addClass('active')
+							.addClass('active-locked');
 
-		// Off-Canvas Navigation.
+				})
+				.each(function() {
 
-			// Title Bar.
-				$(
-					'<div id="titleBar">' +
-						'<a href="#header" class="toggle"></a>' +
-						'<span class="title">' + $('#logo').html() + '</span>' +
-					'</div>'
-				)
-					.appendTo($body);
+					var	$this = $(this),
+						id = $this.attr('href'),
+						$section = $(id);
 
-			// Header.
-				$('#header')
-					.panel({
-						delay: 500,
-						hideOnClick: true,
-						hideOnSwipe: true,
-						resetScroll: true,
-						resetForms: true,
-						side: 'right',
-						target: $body,
-						visibleClass: 'header-visible'
-					});
+					// No section for this link? Bail.
+						if ($section.length < 1)
+							return;
 
-			// Fix: Remove navPanel transitions on WP<10 (poor/buggy performance).
-				if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)
-					$('#titleBar, #header, #wrapper')
-						.css('transition', 'none');
+					// Scrollex.
+						$section.scrollex({
+							mode: 'middle',
+							top: '5vh',
+							bottom: '5vh',
+							initialize: function() {
 
-		// Scroll To Top Animation
-			$('#logo a').click(function () {
-				$('body,html').animate({
-					scrollTop: 0
-				}, 800);
-				return false;
-			});
+								// Deactivate section.
+									$section.addClass('inactive');
 
-			$('.avatar a').click(function () {
-				$('body,html').animate({
-					scrollTop: 0
-				}, 800);
-				return false;
-			});
+							},
+							enter: function() {
 
-	});
+								// Activate section.
+									$section.removeClass('inactive');
+
+								// No locked links? Deactivate all links and activate this section's one.
+									if ($nav_a.filter('.active-locked').length == 0) {
+
+										$nav_a.removeClass('active');
+										$this.addClass('active');
+
+									}
+
+								// Otherwise, if this section's link is the one that's locked, unlock it.
+									else if ($this.hasClass('active-locked'))
+										$this.removeClass('active-locked');
+
+							}
+						});
+
+				});
+
+		// Title Bar.
+			$titleBar = $(
+				'<div id="titleBar">' +
+					'<a href="#header" class="toggle"></a>' +
+					'<span class="title">' + $('#logo').html() + '</span>' +
+				'</div>'
+			)
+				.appendTo($body);
+
+		// Panel.
+			$header
+				.panel({
+					delay: 500,
+					hideOnClick: true,
+					hideOnSwipe: true,
+					resetScroll: true,
+					resetForms: true,
+					side: 'right',
+					target: $body,
+					visibleClass: 'header-visible'
+				});
+
+	// Scrolly.
+		$('.scrolly').scrolly({
+			speed: 1000,
+			offset: function() {
+
+				if (breakpoints.active('<=medium'))
+					return $titleBar.height();
+
+				return 0;
+
+			}
+		});
 
 })(jQuery);
