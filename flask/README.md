@@ -1,5 +1,5 @@
-Daniel Zhao - Portfolio
-=======================
+(Deprecated) Daniel Zhao - Portfolio
+====================================
 
 ## Introduction
 
