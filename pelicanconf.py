@@ -20,7 +20,8 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Github', 'https://github.com/dazhaoniel'),)
+LINKS = (('Github', 'https://github.com/dazhaoniel'),
+         ('Email', 'mailto:daniel@danielatwork.com'),)
 
 # Social widget
 # SOCIAL = (('You can add links in your config file', '#'),)

@@ -2,6 +2,8 @@ Title: Projects
 Date: 2023-10-26
 Category:
 
+Here are some projects from my hobbies. FYI, there are some projects not listed because they are in early stage development, or not ready to showcase.
+
 [AAPI Business Collective](https://www.aapibusiness.co/)
 
 AAPI Business Collective is a directory for businesses owned by Asian Americans and Pacific Islanders. Since the start of Covid-19 pandemic, businesses owned by AAPI have been heavily impacted due to economic hardships, fear and racism. My friend Ada and I created AAPI Business Collective to be a platform for promoting and supporting AAPI businesses, and to be a common space for customers looking to shop at AAPI businesses.
