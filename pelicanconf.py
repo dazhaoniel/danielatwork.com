@@ -21,6 +21,7 @@ AUTHOR_FEED_RSS = None
 
 # Blogroll
 LINKS = (('Github', 'https://github.com/dazhaoniel'),
+         ('Linkedin', 'https://www.linkedin.com/in/dannizhao/'),
          ('Email', 'mailto:daniel@danielatwork.com'),)
 
 # Social widget
