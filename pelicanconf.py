@@ -1,4 +1,4 @@
-AUTHOR = 'Daniel'
+AUTHOR = 'Daniel Zhao'
 SITENAME = 'Daniel Zhao'
 SITEURL = ''
 
