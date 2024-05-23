@@ -10,7 +10,7 @@ DEFAULT_LANG = 'en'
 
 THEME = 'themes/pelican-svbtle'
 
-AUTHOR_BIO = 'Software Engineer at Square'
+AUTHOR_BIO = 'Data Engineer at Mapbox'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
