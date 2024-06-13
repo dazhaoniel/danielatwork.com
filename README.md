@@ -4,6 +4,11 @@
 
 My personal website powered by [Pelican](https://getpelican.com/)
 
+
+### Publish
+
+`pelican content -s publishconf.py`
+
 ### Run docker locally
 
 `docker run -d -p 8080:80 website`
